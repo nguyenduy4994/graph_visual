@@ -1,0 +1,11 @@
+E:\solution\GraphVisual\GraphVisual\bin\Debug\GraphVisual.exe.config
+E:\solution\GraphVisual\GraphVisual\obj\Debug\GraphVisual.csprojResolveAssemblyReference.cache
+E:\solution\GraphVisual\GraphVisual\obj\Debug\GraphVisual.DrawingSpace.resources
+E:\solution\GraphVisual\GraphVisual\obj\Debug\GraphVisual.frmMain.resources
+E:\solution\GraphVisual\GraphVisual\obj\Debug\GraphVisual.Properties.Resources.resources
+E:\solution\GraphVisual\GraphVisual\obj\Debug\GraphVisual.csproj.GenerateResource.Cache
+E:\solution\GraphVisual\GraphVisual\bin\Debug\GraphVisual.exe
+E:\solution\GraphVisual\GraphVisual\bin\Debug\GraphVisual.pdb
+E:\solution\GraphVisual\GraphVisual\obj\Debug\GraphVisual.exe
+E:\solution\GraphVisual\GraphVisual\obj\Debug\GraphVisual.pdb
+E:\solution\GraphVisual\GraphVisual\obj\Debug\GraphVisual.frmSetting.resources
