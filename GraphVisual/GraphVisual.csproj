@@ -55,6 +55,9 @@
     <Compile Include="Algorithm\GirvanNewmanImprovement.cs" />
     <Compile Include="Algorithm\GirvanNewman.cs" />
     <Compile Include="Algorithm\IAlgorithm.cs" />
+    <Compile Include="Algorithm\NewAlgorithm.cs" />
+    <Compile Include="Algorithm\ViaSimilarity.cs" />
+    <Compile Include="DGraph\Clique.cs" />
     <Compile Include="DrawingSpace.cs">
       <SubType>Component</SubType>
     </Compile>

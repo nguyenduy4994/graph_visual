@@ -37,6 +37,8 @@
             this.girvanNewmanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.girvanNewmanImprovementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.congaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findCliqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +65,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.filesToolStripMenuItem,
-            this.networkToolStripMenuItem});
+            this.networkToolStripMenuItem,
+            this.testToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(816, 24);
@@ -82,14 +85,14 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -106,7 +109,7 @@
             // girvanNewmanToolStripMenuItem
             // 
             this.girvanNewmanToolStripMenuItem.Name = "girvanNewmanToolStripMenuItem";
-            this.girvanNewmanToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.girvanNewmanToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
             this.girvanNewmanToolStripMenuItem.Text = "Girvan Newman ";
             this.girvanNewmanToolStripMenuItem.Click += new System.EventHandler(this.girvanNewmanToolStripMenuItem_Click);
             // 
@@ -120,9 +123,24 @@
             // congaToolStripMenuItem
             // 
             this.congaToolStripMenuItem.Name = "congaToolStripMenuItem";
-            this.congaToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.congaToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
             this.congaToolStripMenuItem.Text = "Conga";
             this.congaToolStripMenuItem.Click += new System.EventHandler(this.congaToolStripMenuItem_Click);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.findCliqueToolStripMenuItem});
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.testToolStripMenuItem.Text = "Test";
+            // 
+            // findCliqueToolStripMenuItem
+            // 
+            this.findCliqueToolStripMenuItem.Name = "findCliqueToolStripMenuItem";
+            this.findCliqueToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.findCliqueToolStripMenuItem.Text = "Find clique";
+            this.findCliqueToolStripMenuItem.Click += new System.EventHandler(this.findCliqueToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -169,7 +187,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(209, 388);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(165, 388);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // groupBox1
@@ -178,7 +196,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(203, 110);
+            this.groupBox1.Size = new System.Drawing.Size(159, 110);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Graph info:";
@@ -189,7 +207,7 @@
             this.lblGraphInfo.Location = new System.Drawing.Point(3, 16);
             this.lblGraphInfo.Name = "lblGraphInfo";
             this.lblGraphInfo.Padding = new System.Windows.Forms.Padding(5);
-            this.lblGraphInfo.Size = new System.Drawing.Size(197, 91);
+            this.lblGraphInfo.Size = new System.Drawing.Size(153, 91);
             this.lblGraphInfo.TabIndex = 0;
             // 
             // groupBox2
@@ -198,7 +216,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 119);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(203, 266);
+            this.groupBox2.Size = new System.Drawing.Size(159, 266);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Algorithm Logs:";
@@ -211,7 +229,7 @@
             this.txtAlgorithmLog.Location = new System.Drawing.Point(3, 16);
             this.txtAlgorithmLog.Name = "txtAlgorithmLog";
             this.txtAlgorithmLog.ReadOnly = true;
-            this.txtAlgorithmLog.Size = new System.Drawing.Size(197, 247);
+            this.txtAlgorithmLog.Size = new System.Drawing.Size(153, 247);
             this.txtAlgorithmLog.TabIndex = 0;
             this.txtAlgorithmLog.Text = "";
             this.txtAlgorithmLog.WordWrap = false;
@@ -230,7 +248,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer1.Size = new System.Drawing.Size(816, 388);
-            this.splitContainer1.SplitterDistance = 603;
+            this.splitContainer1.SplitterDistance = 647;
             this.splitContainer1.TabIndex = 4;
             // 
             // drawingSpace
@@ -239,7 +257,7 @@
             this.drawingSpace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.drawingSpace.Location = new System.Drawing.Point(0, 0);
             this.drawingSpace.Name = "drawingSpace";
-            this.drawingSpace.Size = new System.Drawing.Size(603, 388);
+            this.drawingSpace.Size = new System.Drawing.Size(647, 388);
             this.drawingSpace.TabIndex = 2;
             // 
             // frmMain
@@ -290,7 +308,8 @@
         private System.Windows.Forms.Label lblGraphInfo;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ToolStripMenuItem girvanNewmanImprovementToolStripMenuItem;
-
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem findCliqueToolStripMenuItem;
     }
 }
 

@@ -140,6 +140,8 @@ namespace GraphVisual
 
             Random rand = new Random();
 
+            string text = string.Empty;
+
             for (int i = 0; i < numCom; i++)
             {
                 int minWidth = width * (i % col);
@@ -151,10 +153,13 @@ namespace GraphVisual
                 foreach (Node node in MyDocument.CS[i].Nodes)
                 {
                     Node _node = MyDocument.Graph.FindNode(node.Label);
+                    text +=  (int.Parse(_node.Label) - 1).ToString() + ": " + (i + 1).ToString() + ",";
                     _node.NodeBrush = Format.Brushes[i % n];
                     _node.Location = new Point(rand.Next(minWidth, maxWidth), rand.Next(minHeight, maxHeight));
                 }
             }
+
+            txtAlgorithmLog.Text = text;
 
             drawingSpace.Invalidate();
             MessageBox.Show("Girvan Newman algorithm runs complete", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
@@ -314,6 +319,130 @@ namespace GraphVisual
 
             drawingSpace.Invalidate();
             MessageBox.Show("Girvan Newman Improvement algorithm runs complete", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+        }
+
+        private void findCliqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DGraph graph = MyDocument.Graph.Clone();
+            List<Clique> cliques = new List<Clique>();
+            Queue<Node> queue = new Queue<Node>();
+
+            // sap xep
+            List<Node> nodes = (from n in graph.Nodes
+                                orderby n.AdjacencyNodes.Count() descending
+                                select n).ToList();
+
+            // performance benchmark
+            DateTime start_time = DateTime.Now;
+
+            // main algorithm
+            foreach(Node n in nodes)
+            {
+                txtAlgorithmLog.Text += string.Format("Node {0} has {1} adjacency nodes", n.Label, n.AdjacencyNodes.Count);
+                txtAlgorithmLog.Text += "\r\n";
+
+                // kiem tra node da thuoc clique nao chua
+                var clique = (from c in cliques
+                              where c.Nodes.Contains(n)
+                              select c);
+
+                // neu co it nhat 1 clique chua node n thi bo qua nut nay, tiep tuc
+                if (clique.Count() > 0)
+                {
+                    continue;
+                }
+
+                // lấy ra các nút kề với nhau và kề với 
+                List<Node> cliqueNodes = new List<Node>();
+
+                
+            }
+
+            // performance end
+            DateTime end_time = DateTime.Now;
+            TimeSpan elapsed_time = end_time - start_time;
+
+            List<object> brushes = (from b in typeof(Brushes).GetProperties()
+                                   select b.GetValue(null, null)).ToList();
+
+            txtAlgorithmLog.Text += string.Format("Co tong cong {0} cliques. Thoi gian thuc thi la {1}\r\n", cliques.Count(), elapsed_time.TotalMilliseconds);
+            txtAlgorithmLog.SelectionStart = txtAlgorithmLog.Text.Length;
+            txtAlgorithmLog.ScrollToCaret();
+
+            // ve hinh lai na
+            for (int i = 0; i < cliques.Count; i++ )
+            {
+                foreach (Node n in cliques[i].Nodes)
+                {
+                    Node _node = MyDocument.Graph.FindNode(n.Label);
+                    _node.NodeBrush = (Brush)brushes[i];
+                }
+            }
+
+            drawingSpace.Invalidate();
+        }
+
+        private void viaSimilarityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MyDocument == null)
+                return;
+            ViaSimilarity gn = new ViaSimilarity();
+            this.Cursor = Cursors.WaitCursor;
+            gn.Log = txtAlgorithmLog;
+            MyDocument.IsOverlap = false;
+            Stopwatch w = new Stopwatch();
+            w.Start();
+            MyDocument.CS = gn.FindCommunityStructure(MyDocument.Graph);
+            w.Stop();
+            this.Cursor = Cursors.Default;
+
+            lblGraphInfo.Text = "Number of Nodes: " + _MyDocument.Graph.Nodes.Count.ToString() + " nodes\n\r";
+            lblGraphInfo.Text += "Number of Edges: " + _MyDocument.Graph.Edges.Count.ToString() + " edges\n\r";
+            lblGraphInfo.Text += "-------------------------------\r\n";
+            lblGraphInfo.Text += "Detecting community structure in complex networks via node similarity algorithm\n\r";
+            lblGraphInfo.Text += "Run times: " + (w.ElapsedMilliseconds / 1000.0).ToString() + "s\n\r";
+
+            lblGraphInfo.Text += "Using Modularity as quality measure\r\n";
+            lblGraphInfo.Text += "Best Q: " + gn.BestQ.ToString("0.000") + "\r\n";
+
+
+            lblGraphInfo.Text += "Number of community: " + MyDocument.CS.Count.ToString() + "\r\n";
+
+            // Định dạng màu và reposition 
+            int n = Format.Brushes.Length;
+            int numCom = MyDocument.CS.Count;
+            int maxCom = 3;
+
+            // số cột để vẽ
+            int col = (numCom >= maxCom) ? 3 : numCom;
+
+            // số dòng để vẽ
+            int row = (numCom <= maxCom) ? 1 : Convert.ToInt32(Math.Ceiling((double)numCom / maxCom));
+
+            // từ đó tính ra được kích thước
+            int width = drawingSpace.Width / col;
+            int height = drawingSpace.Height / row;
+
+            Random rand = new Random();
+
+            for (int i = 0; i < numCom; i++)
+            {
+                int minWidth = width * (i % col);
+                int maxWidth = minWidth + width;
+
+                int minHeight = height * (i / col);
+                int maxHeight = minHeight + height;
+
+                foreach (Node node in MyDocument.CS[i].Nodes)
+                {
+                    Node _node = MyDocument.Graph.FindNode(node.Label);
+                    _node.NodeBrush = Format.Brushes[i % n];
+                    _node.Location = new Point(rand.Next(minWidth, maxWidth), rand.Next(minHeight, maxHeight));
+                }
+            }
+
+            drawingSpace.Invalidate();
+            MessageBox.Show("Detecting community structure in complex networks via node similarity algorithm runs complete", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
     }
 }

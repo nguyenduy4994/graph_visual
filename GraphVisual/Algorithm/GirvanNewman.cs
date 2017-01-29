@@ -87,7 +87,7 @@ namespace GraphVisual.Algorithm
             return this.Cs;
         }
 
-        private double CalculateModularity(CommunityStructure pCs, DGraph pOriginalGraph)
+        public static double CalculateModularity(CommunityStructure pCs, DGraph pOriginalGraph)
         {
             double modularity = 0;
             int numEdge = pOriginalGraph.Edges.Count;
